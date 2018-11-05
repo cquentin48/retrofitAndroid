@@ -24,8 +24,13 @@ public class Controller implements Callback<List<Change>> {
                 if(response.isSuccessful()){
                     Pokemon poke = response.body();
                     Species species = poke.getSpecies();
+                    Forms form = poke.getFormListIndexI(0);
+                    System.out.println("---]Infos générales[---");
                     System.out.println("Pokémon n° "+poke.getId()+" Nom du pokémon : "+poke.getName());
+                    System.out.println("---]Infos sur l'espèce[---");
                     System.out.println("Espèce : "+species.getName()+ " url : "+species.getUrl());
+                    System.out.println("---]Infos sur la forme[---");
+                    System.out.println("Nom : "+form.getName()+ " url : "+form.getUrl());
                 }else{
                     System.out.println("Erreur : "+response.errorBody());
                 }
